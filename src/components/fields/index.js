@@ -16,7 +16,6 @@ export const customSelect = (props) => {
         <label>{props.label}</label>
       </div>
       <select {...props.input}>
-        <option />
         <option value="tabs">Tabs</option>
         <option value="spaces">Spaces</option>
       </select>
