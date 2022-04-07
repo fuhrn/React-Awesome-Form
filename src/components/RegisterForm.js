@@ -1,9 +1,8 @@
-import React, {Component} from 'react'
-import { Field, reduxForm } from 'redux-form'
-import { customInput, customSelect } from './fields';
-// import { validate } from '../validation'  --> function level validation
-import { required, minLength, maxLength } from '../validation'
-import './RegisterForm.css'
+import React, { Component } from "react";
+import { Field, reduxForm } from "redux-form";
+import { customInput, customSelect } from "./fields";
+import { required, minLength, maxLength, matchesPassword } from "../validation";
+import "./RegisterForm.css";
 
 class RegisterForm extends Component {
   render() {
@@ -21,7 +20,7 @@ class RegisterForm extends Component {
           name="surname"
           component={customInput}
           type="text"
-          label="Last Name"
+          label="Surname"
           validate={[required]}
         />
         <Field
@@ -32,6 +31,20 @@ class RegisterForm extends Component {
           validate={[required, minLength, maxLength]}
         />
         <Field
+          name="password"
+          component={customInput}
+          type="password"
+          label="Password"
+          validate={[required]}
+        />
+        <Field
+          name="confirmPassword"
+          component={customInput}
+          type="password"
+          label="Confirm Password"
+          validate={[required, matchesPassword]}
+        />
+        <Field
           name="preference"
           component={customSelect}
           label="Preferred Formatting"
@@ -40,19 +53,16 @@ class RegisterForm extends Component {
           name="newsletter"
           component={customInput}
           type="checkbox"
-          label="Sign up to Newsletter"
+          label="Sign up to Newsletter?"
         />
-
         <button type="submit">Submit</button>
       </form>
     );
   }
 }
 
-// decorator
 RegisterForm = reduxForm({
-  form: 'register',
-  // validate
-})(RegisterForm)
+  form: "register",
+})(RegisterForm);
 
-export default RegisterForm
+export default RegisterForm;

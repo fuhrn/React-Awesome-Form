@@ -21,7 +21,6 @@
 //   return errors;
 // };
 
-
 //Opcion 2 Synchronous Field level validation
 export const required = (value) => (value ? undefined : "Value is required");
 
@@ -30,3 +29,6 @@ export const minLength = (value) =>
 
 export const maxLength = (value) =>
   value.length > 10 ? "Value is too long" : undefined;
+
+export const matchesPassword = (value, allValues) =>
+  value === allValues.password ? undefined : "Passwords must match";
