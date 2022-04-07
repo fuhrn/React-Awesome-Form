@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { customInput, customSelect } from './fields';
 // import { validate } from '../validation'  --> function level validation
-import { required, minLength, maxLength} from '../validation'
+import { required, minLength, maxLength } from '../validation'
+import './RegisterForm.css'
 
 class RegisterForm extends Component {
   render() {
